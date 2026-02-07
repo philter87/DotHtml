@@ -1,0 +1,101 @@
+﻿using System.Collections.Immutable;
+
+namespace DotHtml;
+
+public static class TagsMeta
+{
+    public static readonly IDictionary<string, List<string>> Tags = new Dictionary<string, List<string>>()
+    {
+        {"a", CreateAttributes("href", "target", "download", "rel")},
+        {"abbr", CreateAttributes("title")},
+        {"article", CreateAttributes()},
+        {"aside", CreateAttributes()},
+        {"audio", CreateAttributes("src", "controls=bool", "autoplay=bool", "loop=bool", "muted=bool", "preload")},
+        {"blockquote", CreateAttributes("cite")},
+        {"body", CreateAttributes()},
+        {"br", CreateAttributes()},
+        {"button", CreateAttributes("name", "type", "value", "disabled=bool")},
+        {"canvas", CreateAttributes("width", "height")},
+        {"cite", CreateAttributes()},
+        {"code", CreateAttributes()},
+        {"datalist", CreateAttributes()},
+        {"dd", CreateAttributes()},
+        {"del", CreateAttributes("cite", "datetime")},
+        {"details", CreateAttributes("open=bool")},
+        {"dialog", CreateAttributes("open=bool")},
+        {"div", CreateAttributes()},
+        {"dl", CreateAttributes()},
+        {"dt", CreateAttributes()},
+        {"em", CreateAttributes()},
+        {"fieldset", CreateAttributes("disabled=bool", "name")},
+        {"figcaption", CreateAttributes()},
+        {"figure", CreateAttributes()},
+        {"footer", CreateAttributes()},
+        {"form", CreateAttributes("onsubmit","name", "action", "method", "enctype", "target", "novalidate=bool")},
+        {"h1", CreateAttributes()},
+        {"h2", CreateAttributes()},
+        {"h3", CreateAttributes()},
+        {"h4", CreateAttributes()},
+        {"h5", CreateAttributes()},
+        {"h6", CreateAttributes()},
+        {"head", CreateAttributes()},
+        {"header", CreateAttributes()},
+        {"hr", CreateAttributes()},
+        {"html", CreateAttributes("lang","xmlns")},
+        {"i", CreateAttributes()},
+        {"iframe", CreateAttributes("src", "width", "height", "name", "sandbox", "allow", "loading")},
+        {"img", CreateAttributes("src", "alt", "width", "height", "loading")},
+        {"input", CreateAttributes("type", "name", "oninput", "value", "autocomplete", "placeholder","disabled=bool","@checked=bool", "required=bool", "@readonly=bool", "min", "max", "step", "pattern", "maxlength", "minlength")},
+        {"ins", CreateAttributes("cite", "datetime")},
+        {"kbd", CreateAttributes()},
+        {"label", CreateAttributes("@for")},
+        {"legend", CreateAttributes()},
+        {"li", CreateAttributes("value")},
+        {"link", CreateAttributes("href","rel","@as","crossorigin=bool","type")},
+        {"main", CreateAttributes()},
+        {"mark", CreateAttributes()},
+        {"meta", CreateAttributes("name", "content", "charset", "property")},
+        {"nav", CreateAttributes()},
+        {"noscript", CreateAttributes()},
+        {"ol", CreateAttributes("type", "start", "reversed=bool")},
+        {"option", CreateAttributes("value", "disabled=bool", "selected=bool")},
+        {"output", CreateAttributes("name", "@for")},
+        {"p", CreateAttributes()},
+        {"picture", CreateAttributes()},
+        {"pre", CreateAttributes()},
+        {"progress", CreateAttributes("value", "max")},
+        // {"script", CreateAttributes("type", "src","defer=bool")}, // Handled separately to allow raw HTML
+        {"section", CreateAttributes()},
+        {"select", CreateAttributes("name", "multiple=bool", "required=bool", "disabled=bool", "size")},
+        {"small", CreateAttributes()},
+        {"source", CreateAttributes("src", "type", "srcset", "media")},
+        {"span", CreateAttributes()},
+        {"strong", CreateAttributes()},
+        {"style", CreateAttributes("type")},
+        {"sub", CreateAttributes()},
+        {"summary", CreateAttributes()},
+        {"sup", CreateAttributes()},
+        {"svg", CreateAttributes("svg", "width", "height", "viewBox", "xmlns")},
+        {"table", CreateAttributes()},
+        {"tbody", CreateAttributes()},
+        {"td", CreateAttributes("colspan", "rowspan", "headers")},
+        {"template", CreateAttributes()},
+        {"textarea", CreateAttributes("name", "value", "rows", "cols", "placeholder", "autocomplete", "required=bool", "disabled=bool", "@readonly=bool", "maxlength", "minlength")},
+        {"th", CreateAttributes("colspan", "rowspan", "scope", "headers")},
+        {"thead", CreateAttributes()},
+        {"time", CreateAttributes("datetime")},
+        {"title", CreateAttributes()},
+        {"tr", CreateAttributes()},
+        {"track", CreateAttributes("src", "kind", "srclang", "label", "@default=bool")},
+        {"ul", CreateAttributes()},
+        {"video", CreateAttributes("src", "width", "height","controls=bool", "autoplay=bool", "loop=bool", "muted=bool", "poster", "preload")},
+    }.ToImmutableDictionary();
+
+    private static List<string> CreateAttributes(params string[] additionalAttributes)
+    {
+        var attributes = new List<string>() { "@class" };
+        attributes.AddRange(additionalAttributes);
+        attributes.AddRange(["style", "id", "hidden=bool", "onclick", "role","tabindex"]);
+        return attributes;
+    }
+}
