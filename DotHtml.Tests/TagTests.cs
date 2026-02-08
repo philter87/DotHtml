@@ -117,4 +117,5 @@ public class TagTests
         // Assert
         html.Should().Be("<div><p>Hello World!</p><p></p><p>Bla</p></div>");
     }
+    
 }

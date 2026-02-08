@@ -10,13 +10,12 @@ public class HtmlTag(string tag) : HtmlNode, IEnumerable<HtmlNode>
 
     private bool? _allowRawHtml; 
     
-    public static HtmlTag operator << (HtmlTag parent, string? child)
+    public static HtmlTag operator << (HtmlTag parent, HtmlNode? child)
         => child == null ? parent : parent.Add(child);
     
     public static HtmlTag operator << (HtmlTag parent, IEnumerable<HtmlNode?> child)
         => parent.Add(child.OfType<HtmlNode>().ToList());
     
-    public string GetTagName() => tag;
     
     public HtmlTag AllowRawHtml(bool allow = true)
     {

@@ -1,6 +1,6 @@
 # DotHtml
-> A fun and simple way to generate HTML in C# with type-safety and IntelliSense support
-DotHtml is a lightweight alternative to Razor that makes it easy to create reusable HTML components directly in C#. No more context-switching between C# and markup - write everything in type-safe C# and let your IDE help you catch errors before runtime.
+> A fun and simple way to generate HTML in C# with type-safety.
+DotHtml is a lightweight alternative to Razor that makes it easy to create reusable HTML components directly in C#.
 
 ## Why DotHtml?
 **Traditional HTML:**
